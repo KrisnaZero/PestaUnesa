@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+
+	<title>Sukses</title>
+
+  </head>
+  <body>
+    <div class="container">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Booking Sukses!</h4>
+        <p>Selamat booking stadion anda sudah sukses , setelah ini harap konfirmasi pembayaran dengan menghubungi kontak Whats App Admin.</p>
+        <hr>
+        <p class="mb-0">WhatsApp 089699912123.</p>
+      </div>
+      <form class="d-flex">
+        <a href="Jadwal.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cek Jadwal</a>
+    </form>
+    </div>
+</html>
