@@ -73,27 +73,33 @@ if (isset($_POST['submit'])) {
                 </div>
                 <!-- name input -->
                 <div class="form-outline mb-4">
-                    <input type="username" id="username" class="form-control form-control-lg"
+                    <input type="username" name="username" class="form-control form-control-lg"
                       placeholder="Username" value="<?php echo $username; ?>" required />
                     <label class="form-label" for="username">Username</label>
                   </div>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <input type="email" id="email" class="form-control form-control-lg"
+                    <input type="email" name="email" class="form-control form-control-lg"
                       placeholder="Email" value="<?php echo $email; ?>" required />
                     <label class="form-label" for="email">Email</label>
                   </div>
       
                 <!-- Password input -->
                 <div class="form-outline mb-3">
-                  <input type="password" id="form3Example4" class="form-control form-control-lg"
+                  <input type="password" name="password" class="form-control form-control-lg"
                     placeholder="Password" value="<?php echo $password; ?>" required />
+                  <label class="form-label" for="password">Password</label>
+                </div>
+                <!-- confirm Password input -->
+                <div class="form-outline mb-3">
+                  <input type="password" name="cpassword" class="form-control form-control-lg"
+                    placeholder="Confirm Password" value="<?php echo $cpassword; ?>" required />
                   <label class="form-label" for="password">Password</label>
                 </div>
       
       
                 <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="button" class="btn btn-primary btn-block mb-4">Sign Up</button>
+                <button name="submit" type="button" class="btn btn-primary btn-block mb-4">Sign Up</button>
                   <p class="small fw-bold mt-2 pt-1 mb-0">Sudah mempunyai akun , silahkan <a href="Login.php"
                       class="link-danger">Login</a></p>
                 </div>

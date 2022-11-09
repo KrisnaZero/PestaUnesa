@@ -66,8 +66,8 @@ if (!isset($_SESSION['username'])) {
 					<img src="assets/images/Football Goal.svg" class="img-fluid" alt="Web Development">
 				</div>
 				<div class="col-lg-6">
-				<?php echo	
-                <h1 class="mt-3">\ $_SESSION['username']Welcome to Pesta Unesa!</h1>?>
+				
+                <h1 class="mt-3">Welcome to Pesta Unesa!</h1>
 					<p class="lead text-secondary my-5">PestaUnesa merupakan website manajemen stadion yang mengatur penyewaan dan penjadwalan stadion.</p>
 					<a href="service.html" class="btn btn-outline-secondary btn-lg border">Booking Sekarang</a>
 				</div>
