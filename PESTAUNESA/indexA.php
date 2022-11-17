@@ -1,12 +1,3 @@
-<?php
-
-session_start();
-
-if (!isset($_SESSION['username'])) {
-    header("Location: Login.php");
-}
-
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -20,40 +11,35 @@ if (!isset($_SESSION['username'])) {
 
 
 
-	<title>HomePage</title>
+	<title>HomePage Admin</title>
 
   </head>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="Login.html">
+            <a class="navbar-brand" href="Login.html"> 
                 <h2 class="text-primary">PestaUnesa</h2>
-            </a>
+            </a> 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mob-navbar" aria-label="Toggle">
             <span class="navbar-toggler-icon"></span>
-            </button>
+            </button> 
             <div class="collapse navbar-collapse" id="mob-navbar">
                 <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                        <a class="nav-link active" aria-current="page" href="indexA.php">Home</a>
                     </li>
 					<li class="nav-item">
-                        <a class="nav-link" href="informasi.php">Informasi</a>
+                        <a class="nav-link" href="informasiA.php">Informasi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="Jadwal.php">Jadwal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="service.php">Booking</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.php">About Us</a>
+                        <a class="nav-link" href="JadwalA.php">Jadwal</a>
                     </li>
                 </ul>
                 <form class="d-flex">
                     <a href="Login.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Login</a>
                 </form>
             </div>
+            
         </div>
     </nav>
 </header>
@@ -66,10 +52,9 @@ if (!isset($_SESSION['username'])) {
 					<img src="assets/images/Football Goal.svg" class="img-fluid" alt="Web Development">
 				</div>
 				<div class="col-lg-6">
-				
-                <h1 class="mt-3">Welcome to Pesta Unesa!</h1>
+					<h1 class="mt-3">Welcome to Pesta Unesa!</h1>
 					<p class="lead text-secondary my-5">PestaUnesa merupakan website manajemen stadion yang mengatur penyewaan dan penjadwalan stadion.</p>
-					<a href="service.html" class="btn btn-outline-secondary btn-lg border">Booking Sekarang</a>
+					
 				</div>
 			</div>
 		</div>
