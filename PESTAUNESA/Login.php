@@ -7,7 +7,7 @@ $_SESSION['KCFINDER']['uploadURL'] = "/bkk/Images/";
 $_SESSION['KCFINDER']['uploadDir'] = "";
 
 
-include("db/config.php");
+include("pestaunesa/config.php");
 if (!empty($_SESSION['usernamepesan']) && !empty($_SESSION['namapesan'])){
 	echo "<script type=text/javascript>  
 alert('Anda Sudah Login :) , Silahkan Logout terlebih dahulu');  
@@ -36,22 +36,6 @@ if(!empty($_POST['submit'])){
     }
     }
   ?>
-if (isset($_POST['submit'])) {
-	$email = $_POST['email'];
-	$password = md5($_POST['password']);
-
-	$sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-	$result = mysqli_query($conn, $sql);
-	if ($result->num_rows > 0) {
-		$row = mysqli_fetch_assoc($result);
-		$_SESSION['username'] = $row['username'];
-		header("Location: index.php");
-	} else {
-		echo "<script>alert('Woops! Email Atau Password anda Salah.')</script>";
-	}
-}
-
-?>
 <!doctype html>
 <html lang="en">
   <head>
