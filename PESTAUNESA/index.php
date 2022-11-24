@@ -1,91 +1,172 @@
-
-<!doctype html>
+<?php 
+session_start();
+//require_once 'cekstatus.php';
+include("db/config.php");
+ ?>
+ 
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="utf-8">
+<title>Aplikasi Reservasi Lapangan Futsal </title>
+<!-- CK EDITOR -->
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+<link href="ckeditor/content.css" rel="stylesheet" type="text/css"/>
+<script src="https://cdn.ckeditor.com/4.4.3/standard/ckeditor.js"></script>
+<!-- CK EDITOR -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600"
+        rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/pages/dashboard.css" rel="stylesheet">
+<script type="text/javascript" src="../ckeditor/ckeditor.js"></script>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
+<script type="text/javascript" src="plug/BeatPicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="plug/BeatPicker.min.css">
+<!-- data table -->
 
+    <link rel="stylesheet" href="media/css/jquery.dataTables.css" type="text/css" />
 
-	<title>HomePage</title>
+    <script src="media/js/jquery.dataTables.js"></script>
 
-  </head>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="Login.php">
-                <h2 class="text-primary">PestaUnesa</h2>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mob-navbar" aria-label="Toggle">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="mob-navbar">
-                <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                    </li>
-					<li class="nav-item">
-                        <a class="nav-link" href="informasi.php">Informasi</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="Jadwal.php">Jadwal</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="service.php">Booking</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.php">About Us</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <a href="Login.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Login</a>
-                </form>
-            </div>
-        </div>
-    </nav>
-</header>
-<!-- End Header Section -->
-	<!--BannerPESTAuNESA-->
-	<section class="hero-banner bg-light py-5">
-		<div class="container">
-			<div class="row row align-items-center">
-				<div class="col-lg-5 offset-lg-1 order-lg-1">
-					<img src="assets/images/Football Goal.svg" class="img-fluid" alt="Web Development">
-				</div>
-				<div class="col-lg-6">
-				
-                <h1 class="mt-3">Welcome to Pesta Unesa!</h1>
-					<p class="lead text-secondary my-5">PestaUnesa merupakan website manajemen stadion yang mengatur penyewaan dan penjadwalan stadion.</p>
-					<a href="service.php" class="btn btn-outline-secondary btn-lg border">Booking Sekarang</a>
-				</div>
-			</div>
-		</div>
-	</section>
-   <!-- Footer whatsapp PestaUnesa  -->
-   <div class="bg-light pt-5 mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-3">
-                <div class="widget-title">
-                    <h3 class="mb-4 fs-5 text-secondary text-uppercase">WhatsApp</h3>
-                </div>
-                <h4 class="text-success">089699912123</h4>
-                <p class="text-secondary m-0 mt-3">Senin. - Kamis. <b>07.00 - 17:00</b></p>
-                <p class="text-secondary">Juma,at. - Minggu. <b>13.00 - 22.00</b></p>
-            </div>
-        </div>
+<script type="text/javascript" charset="utf-8">
+$(document).ready(function() {
+    $('#datatables').DataTable({
+        "scrollX": true,
+                         "oLanguage": {
+                              "sLengthMenu": "Tampilkan _MENU_ data per halaman",
+                              "sSearch": "Pencarian: ", 
+                              "sZeroRecords": "Maaf, tidak ada data yang ditemukan",
+                              "sInfo": "Menampilkan _START_ s/d _END_ dari _TOTAL_ data",
+                              "sInfoEmpty": "Menampilkan 0 s/d 0 dari 0 data",
+                              "sInfoFiltered": "(di filter dari _MAX_ total data)",
+
+                            }
+
+    } );
+} );
+</script>
+
+</head>
+<body>
+
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container"><span
+      class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span> </a><a class="brand" href="index.php">
+      <?php if (empty($_SESSION['namapengunjung'])){
+        echo "$namaprofil";
+        }else{ 
+        echo "Pemesanan Lapangan Futsal";
+    }
+    ?></a>
+      
+      <div class="nav-collapse">
+      <?php if (empty($_SESSION['namapengunjung'])){
+        echo "";
+        }else{ ?>
+        <ul class="nav pull-right">
+          <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+            class="icon-user"></i> <?php echo $_SESSION['namapengunjung']; ?> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="logout.php">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+        <?php } ?>
+      </div>
+      <!--/.nav-collapse --> 
+   
     </div>
+    <!-- /container --> 
+  </div>
+  <!-- /navbar-inner --> 
 </div>
-	
-    <!-- Optional JavaScript; choose one of the two! -->
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  </body>
-</php>
+<!-- /navbar -->
+<div class="subnavbar">
+  <div class="subnavbar-inner">
+    <div class="container">
+      <?php include('menu.php'); ?>
+    </div>
+    <!-- /container --> 
+  </div>
+  <!-- /subnavbar-inner --> 
+</div>
+<!-- /subnavbar -->
+<div class="main">
+  <div class="main-inner">
+    <div class="container">
+      <div class="row">
+
+            <?php
+if(!empty($_GET['modul']))
+{
+  if(file_exists("modul/$_GET[modul].php"))
+  { 
+  include("modul/$_GET[modul].php");
+  } else 
+  {
+  echo "<h2>Error !<br/>Halaman Tidak Di Temukan !</h2>";
+  }
+} else 
+{ 
+?>
+
+              <div class="col-md-9" >
+
+                <div class="widget">
+              
+                   <div class="widget-content">
+                
+                      SELAMAT DATANG ^_^ <?php echo $_SESSION['namapengunjung']?>
+
+                                </div> <!-- /widget-content -->
+                           </div> <!-- /widget -->
+                    </div> <!-- /span6 -->
+
+                    <!-- menu kanan -->
+                    <?php include 'modul/menu_kanan.php'; ?>
+
+                          
+        <?php } ?>
+      <!-- /row --> 
+    </div>
+    <!-- /container --> 
+  </div>
+  <!-- /main-inner --> 
+</div>
+<!-- /main -->
+</div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- /extra -->
+<footer class="application-footer">
+            <div class="container">
+                <p><b>Aplikasi Reservasi Lapangan Futsal</b></p>
+                <div class="disclaimer">                           
+                <div class="disclaimer">
+                    <p>All right reserved.</p>
+                    <p>Copyright ©<?php echo "$namaprofil";?></p>
+                </div>
+            </div>
+        </footer>
+<!-- /footer --> 
+<!-- Le javascript
+================================================== --> 
+<!-- Placed at the end of the document so the pages load faster --> 
+<script src="js/excanvas.min.js"></script> 
+<script src="js/chart.min.js" type="text/javascript"></script> 
+<script src="js/bootstrap.js"></script>
+
+</body>
+</html>
+
