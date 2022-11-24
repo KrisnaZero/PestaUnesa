@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="en">
+<!doctype php>
+<php lang="en">
   <head>
      <!-- Required meta tags -->
      <meta charset="utf-8">
@@ -16,7 +16,7 @@
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="Login.html">
+            <a class="navbar-brand" href="Login.php">
                 <h2 class="text-primary">PestaUnesa</h2>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mob-navbar" aria-label="Toggle">
@@ -117,5 +117,5 @@
         <!-- Bootstrap JS -->
         <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
     </body>
-</html>
-</html>
+</php>
+</php>

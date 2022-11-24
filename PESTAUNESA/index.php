@@ -7,8 +7,8 @@ if (!isset($_SESSION['username'])) {
 }
 
 ?>
-<!doctype html>
-<html lang="en">
+<!doctype php>
+<php lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -26,7 +26,7 @@ if (!isset($_SESSION['username'])) {
   <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="Login.html">
+            <a class="navbar-brand" href="Login.php">
                 <h2 class="text-primary">PestaUnesa</h2>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mob-navbar" aria-label="Toggle">
@@ -69,7 +69,7 @@ if (!isset($_SESSION['username'])) {
 				
                 <h1 class="mt-3">Welcome to Pesta Unesa!</h1>
 					<p class="lead text-secondary my-5">PestaUnesa merupakan website manajemen stadion yang mengatur penyewaan dan penjadwalan stadion.</p>
-					<a href="service.html" class="btn btn-outline-secondary btn-lg border">Booking Sekarang</a>
+					<a href="service.php" class="btn btn-outline-secondary btn-lg border">Booking Sekarang</a>
 				</div>
 			</div>
 		</div>
@@ -97,4 +97,4 @@ if (!isset($_SESSION['username'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
   </body>
-</html>
+</php>

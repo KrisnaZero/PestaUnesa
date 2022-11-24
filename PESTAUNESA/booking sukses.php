@@ -22,7 +22,7 @@
         <p class="mb-0">WhatsApp 089699912123.</p>
       </div>
       <form class="d-flex">
-        <a href="Jadwal.html" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cek Jadwal</a>
+        <a href="Jadwal.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Cek Jadwal</a>
     </form>
     </div>
 </html>
