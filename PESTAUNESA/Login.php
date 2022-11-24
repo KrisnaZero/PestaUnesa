@@ -1,15 +1,41 @@
 <?php
-
-include 'config.php';
-
 session_start();
 
-error_reporting(0);
+$_SESSION['KCFINDER']=array();
+$_SESSION['KCFINDER']['disabled'] = false;
+$_SESSION['KCFINDER']['uploadURL'] = "/bkk/Images/";
+$_SESSION['KCFINDER']['uploadDir'] = "";
 
-if (isset($_SESSION['username'])) {
-    header("Location: index.php");
+
+include("db/config.php");
+if (!empty($_SESSION['usernamepesan']) && !empty($_SESSION['namapesan'])){
+	echo "<script type=text/javascript>  
+alert('Anda Sudah Login :) , Silahkan Logout terlebih dahulu');  
+window.location = 'index.php';  
+</script>";
+	//header('Location:index.php');
 }
 
+if(!empty($_POST['submit'])){
+
+  $perintah_query=mysql_query("SELECT * FROM pelanggan WHERE username= '$_POST[username]' AND password= md5('$_POST[password]')");
+    if ($hasil_cek=mysql_num_rows($perintah_query))
+    {
+    //SUKSESS
+    $datauser=mysql_fetch_array($perintah_query);
+    $_SESSION['usernamepengunjung']=$_POST['username'];
+    $_SESSION['passpengunjung']=$_POST['password'];
+    $_SESSION['namapengunjung']=$datauser['nama'];
+  //	echo $_SESSION[level];
+    
+    header("Location: index.php"); 
+    }	else
+    {
+    //GAGAL LOGIN
+    header("Location: Login.php?err=yes");
+    }
+    }
+  ?>
 if (isset($_POST['submit'])) {
 	$email = $_POST['email'];
 	$password = md5($_POST['password']);
@@ -59,20 +85,19 @@ if (isset($_POST['submit'])) {
       
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                  <input type="email" id="email" class="form-control form-control-lg"
-                    placeholder="Email" value="<?php echo $email; ?>" required/>
-                  <label class="form-label" for="email">Email</label>
+                  <label for="">Username:</label>
+					        <input type="username" id="" name="username" value="" placeholder="Username" class="login username-field" required />
                 </div>
       
                 <!-- Password input -->
                 <div class="form-outline mb-3">
-                  <input type="password" id="password" class="form-control form-control-lg"
-                    placeholder="Password" value="<?php echo $password; ?>" required/>
-                  <label class="form-label" for="password">Password</label>
+                <label for="password">Password:</label>
+					        <input type="password" id="password" name="password" value="" placeholder="Password" class="login password-field" required/>
+                  
                 </div>
       
                 <div class="text-center text-lg-start mt-4 pt-2">
-                <button name="submit" type="button" class="btn btn-primary btn-block mb-4">Login</button>
+                <input type="submit" name="submit" class="button btn btn-success btn-large"/>
                   <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="signup.php"
                       class="link-danger">Register</a></p>
                 </div>
