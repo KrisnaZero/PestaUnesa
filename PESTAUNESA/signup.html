@@ -1,47 +1,4 @@
-<?php
 
-include 'config.php';
-
-error_reporting(0);
-
-session_start();
-
-if (isset($_SESSION['username'])) {
-    header("Location: Login.php");
-}
-
-if (isset($_POST['submit'])) {
-	$username = $_POST['username'];
-	$email = $_POST['email'];
-	$password = md5($_POST['password']);
-	$cpassword = md5($_POST['cpassword']);
-
-	if ($password == $cpassword) {
-		$sql = "SELECT * FROM users WHERE email='$email'";
-		$result = mysqli_query($conn, $sql);
-		if (!$result->num_rows > 0) {
-			$sql = "INSERT INTO users (username, email, password)
-					VALUES ('$username', '$email', '$password')";
-			$result = mysqli_query($conn, $sql);
-			if ($result) {
-				echo "<script>alert('Wow! User Registration Completed.')</script>";
-				$username = "";
-				$email = "";
-				$_POST['password'] = "";
-				$_POST['cpassword'] = "";
-			} else {
-				echo "<script>alert('Woops! Something Wrong Went.')</script>";
-			}
-		} else {
-			echo "<script>alert('Woops! Email Already Exists.')</script>";
-		}
-
-	} else {
-		echo "<script>alert('Password Not Matched.')</script>";
-	}
-}
-
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -74,33 +31,33 @@ if (isset($_POST['submit'])) {
                 <!-- name input -->
                 <div class="form-outline mb-4">
                     <input type="username" name="username" class="form-control form-control-lg"
-                      placeholder="Username" value="<?php echo $username; ?>" required />
+                      placeholder="Username" value="<?html echo $username; ?>" required />
                     <label class="form-label" for="username">Username</label>
                   </div>
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                     <input type="email" name="email" class="form-control form-control-lg"
-                      placeholder="Email" value="<?php echo $email; ?>" required />
+                      placeholder="Email" value="<?html echo $email; ?>" required />
                     <label class="form-label" for="email">Email</label>
                   </div>
       
                 <!-- Password input -->
                 <div class="form-outline mb-3">
                   <input type="password" name="password" class="form-control form-control-lg"
-                    placeholder="Password" value="<?php echo $password; ?>" required />
+                    placeholder="Password" value="<?html echo $password; ?>" required />
                   <label class="form-label" for="password">Password</label>
                 </div>
                 <!-- confirm Password input -->
                 <div class="form-outline mb-3">
                   <input type="password" name="cpassword" class="form-control form-control-lg"
-                    placeholder="Confirm Password" value="<?php echo $cpassword; ?>" required />
+                    placeholder="Confirm Password" value="<?html echo $cpassword; ?>" required />
                   <label class="form-label" for="password">Password</label>
                 </div>
       
       
                 <div class="text-center text-lg-start mt-4 pt-2">
                 <button name="submit" type="button" class="btn btn-primary btn-block mb-4">Sign Up</button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">Sudah mempunyai akun , silahkan <a href="Login.php"
+                  <p class="small fw-bold mt-2 pt-1 mb-0">Sudah mempunyai akun , silahkan <a href="Login.html"
                       class="link-danger">Login</a></p>
                 </div>
       

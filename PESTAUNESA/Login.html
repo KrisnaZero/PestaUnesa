@@ -1,31 +1,4 @@
-<?php
 
-include 'config.php';
-
-session_start();
-
-error_reporting(0);
-
-if (isset($_SESSION['username'])) {
-    header("Location: index.php");
-}
-
-if (isset($_POST['submit'])) {
-	$email = $_POST['email'];
-	$password = md5($_POST['password']);
-
-	$sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-	$result = mysqli_query($conn, $sql);
-	if ($result->num_rows > 0) {
-		$row = mysqli_fetch_assoc($result);
-		$_SESSION['username'] = $row['username'];
-		header("Location: index.php");
-	} else {
-		echo "<script>alert('Woops! Email Atau Password anda Salah.')</script>";
-	}
-}
-
-?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -60,20 +33,20 @@ if (isset($_POST['submit'])) {
                 <!-- Email input -->
                 <div class="form-outline mb-4">
                   <input type="email" id="email" class="form-control form-control-lg"
-                    placeholder="Email" value="<?php echo $email; ?>" required/>
+                    placeholder="Email" value="<?html echo $email; ?>" required/>
                   <label class="form-label" for="email">Email</label>
                 </div>
       
                 <!-- Password input -->
                 <div class="form-outline mb-3">
                   <input type="password" id="password" class="form-control form-control-lg"
-                    placeholder="Password" value="<?php echo $password; ?>" required/>
+                    placeholder="Password" value="<?html echo $password; ?>" required/>
                   <label class="form-label" for="password">Password</label>
                 </div>
       
                 <div class="text-center text-lg-start mt-4 pt-2">
                 <button name="submit" type="button" class="btn btn-primary btn-block mb-4">Login</button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="signup.php"
+                  <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="signup.html"
                       class="link-danger">Register</a></p>
                 </div>
       
