@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
     require: [true, "Please enter an password"],
     minlength: [6, "Minimum password length is 6 characters"],
   },
+  role: {
+    type: String,
+    default: "user",
+  },
 });
 
 //fire a function after doc saved to db
