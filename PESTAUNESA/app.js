@@ -1,3 +1,4 @@
+require("dotenv").config();
 const exspress = require("express");
 const mongoose = require("mongoose");
 const app = exspress();
@@ -15,8 +16,8 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 
 //connect to mongoDB
-const dbURI =
-  "mongodb+srv://admin1:admin123@mylaundry.4krhzfc.mongodb.net/pestaUnesa?retryWrites=true&w=majority";
+console.log(process.env.DBURI);
+const dbURI = process.env.DBURI;
 const database = (module.exports = () => {
   const connectionParams = {
     useNewUrlParser: true,
@@ -34,9 +35,7 @@ const database = (module.exports = () => {
 
 database();
 
-app.get("/", (req, res) => {
-  res.render("index", { title: "Homepage" });
-});
+app.get("*", checkUser);
 
 // routes
 app.use(routes);
