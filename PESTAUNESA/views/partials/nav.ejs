@@ -14,9 +14,22 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="mob-navbar">
+        <% if (user) { %> <% if (user.role == "admin") { %>
         <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/informasi">Informasi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/jadwalAdmin">Jadwal</a>
+          </li>
+        </ul>
+        <% } else { %>
+        <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/informasi">Informasi</a>
@@ -31,6 +44,35 @@
             <a class="nav-link" href="/about-us">About Us</a>
           </li>
         </ul>
+        <% } %> <% } else { %>
+        <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/informasi">Informasi</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/jadwal">Jadwal</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/booking">Booking</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about-us">About Us</a>
+          </li>
+        </ul>
+        <% } %> <% if (user) { %>
+        <form class="d-flex">
+          <a
+            href="/logout"
+            class="btn btn-primary btn-lg active"
+            role="button"
+            aria-pressed="true"
+            >Logout</a
+          >
+        </form>
+        <% } else { %>
         <form class="d-flex">
           <a
             href="/login"
@@ -40,6 +82,7 @@
             >Login</a
           >
         </form>
+        <% } %>
       </div>
     </div>
   </nav>
