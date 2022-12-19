@@ -56,7 +56,6 @@ module.exports.jadwalCancel = async (req, res) => {
 module.exports.bookingGet = (req, res) => {
   res.render("service", { title: "Booking" });
 };
-//create booking
 module.exports.bookingPost = async (req, res) => {
   // Mengubah format date dari yyyy-mm-dd ke dd/mm/yyyy
   dateFormat = (date) => {
