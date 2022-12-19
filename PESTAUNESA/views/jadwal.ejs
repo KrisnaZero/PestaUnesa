@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="css/style.css" /> -->
+
+    <title>PestaUnesa | <%= title %></title>
+  </head>
+  <header><%- include("./partials/nav.ejs") %></header>
+  <body>
+    <div class="container py-5">
+      <h2>Section title</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <% if (user) { %> <% if (user.role == "admin" ) { %>
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Jadwal Mulai</th>
+              <th>Jadwal Selesai</th>
+              <th>Keperluan</th>
+              <th>Asal</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <% } else { %>
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Jadwal Mulai</th>
+              <th>Jadwal Selesai</th>
+              <th>Keperluan</th>
+              <th>Asal</th>
+            </tr>
+          </thead>
+          <% } %> <% } else { %>
+          <thead>
+            <tr>
+              <th>Nama</th>
+              <th>Jadwal Mulai</th>
+              <th>Jadwal Selesai</th>
+              <th>Keperluan</th>
+              <th>Asal</th>
+            </tr>
+          </thead>
+          <% } %>
+          <tbody>
+            <% bookings.forEach((booking)=> { %>
+            <tr>
+              <td><%= booking.name %></td>
+              <td><%= booking.bookingMulai %></td>
+              <td><%= booking.bookingSelesai %></td>
+              <td><%= booking.keperluan %></td>
+              <td><%= booking.asal %></td>
+              <% if (user) { %>
+              <td>
+                <% if (user.role == "admin") { %> <% if (booking.validation ==
+                true) { %>
+                <form action="/jadwal/cancel/<%= booking._id %>" method="post">
+                  <button class="btn btn-danger btn-block mb-4 p-1">
+                    Cancel
+                  </button>
+                </form>
+                <% } else { %>
+                <form action="/jadwal/accept/<%= booking._id %>" method="post">
+                  <button class="btn btn-success btn-block mb-4 p-1">
+                    Accept
+                  </button>
+                </form>
+                <% } %> <% } %>
+              </td>
+              <% } %>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Footer whatsapp PestaUnesa  -->
+    <%- include("./partials/footer.ejs") %>
+  </body>
+</html>
